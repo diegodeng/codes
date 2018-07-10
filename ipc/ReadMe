@@ -1,0 +1,10 @@
+#代码测试进程间通讯,以及系统函数的应用
+主要包括
+	1 pipe
+	
+	2 fifo
+	3 massege queue
+	4 semaphore
+	5 share memory
+	6 socket
+
