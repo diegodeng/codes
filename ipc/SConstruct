@@ -1,0 +1,4 @@
+#scons build the codes
+
+
+Program('pipe.c')
