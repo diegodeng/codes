@@ -6,4 +6,9 @@
 #Program('write_fifo.c')
 #Program('read_fifo.c')
 
-Program('semaphore.c')
+#Program('semaphore.c')
+
+#Program('msg_queue.c')
+
+Program('msg_server.c')
+Program('msg_client.c')
