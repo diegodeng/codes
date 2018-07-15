@@ -3,5 +3,7 @@
 
 #Program('pipe.c')
 
-Program('write_fifo.c')
-Program('read_fifo.c')
+#Program('write_fifo.c')
+#Program('read_fifo.c')
+
+Program('semaphore.c')
