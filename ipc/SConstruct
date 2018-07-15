@@ -1,4 +1,7 @@
 #scons build the codes
 
 
-Program('pipe.c')
+#Program('pipe.c')
+
+Program('write_fifo.c')
+Program('read_fifo.c')
