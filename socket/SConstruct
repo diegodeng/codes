@@ -1,0 +1,3 @@
+
+Program('socket_server.c')
+Program('socket_client.c')
