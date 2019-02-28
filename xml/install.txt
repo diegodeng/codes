@@ -1,0 +1,2 @@
+Ubuntu系统： sudo apt-get install libxml2-dev
+http://www.xmlsoft.org/tutorial/index.html

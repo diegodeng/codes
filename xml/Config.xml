@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <integer name="RIL_MAX_NUM">108</integer>
+    <bool name="enable_debug">true</bool>
+    <string name="nl678">V1507P0101</string>
+    <config name="m910">V1508P0103</config>
+</resources>
