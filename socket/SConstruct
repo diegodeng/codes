@@ -1,3 +1,16 @@
+#https://www.scons.org/doc/production/HTML/scons-user/index.html
+#StaticLibrary('foo', ['f1.c', 'f2.c', 'f3.c'])
+#SharedLibrary('foo', ['f1.c', 'f2.c', 'f3.c'])
+#compile scons -Q   clean scons -c
 
-Program('socket_server.c')
-Program('socket_client.c')
+#Program('socket_server.c')
+#Program('socket_client.c')
+
+env = Environment(CC = 'gcc',
+                   CCFLAGS = '-O2')
+
+
+env.SharedLibrary('socket', ['lib.c','sock_ntop.c','writen.c','readn.c','readline.c'])
+
+env.Program('server.c', LIBS=['socket'], LIBPATH=['/home/dengzq/Documents/codes/socket'])
+env.Program('client.c', LIBS=['socket'], LIBPATH=['.'])

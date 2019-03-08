@@ -51,7 +51,7 @@ int main(int argc,char *agrv[])
 	}
 	memset(&serveraddr,0,sizeof(serveraddr));
 	serveraddr.sin_family = AF_INET;
-	serveraddr.sin_addr.s_addr = htonl(INADDR_ANY);
+	serveraddr.sin_addr.s_addr = htonl(INADDR_ANY);   /*INADDR_ANY means 0.0.0.0*/
 	serveraddr.sin_port = htons(6666);
 
 	ret = bind(listenfd,(struct sockaddr *)&serveraddr,sizeof(serveraddr));
