@@ -42,6 +42,8 @@
 /* Miscellaneous constants */
 #define	MAXLINE		4096	/* max text line length */
 #define	BUFFSIZE	8192	/* buffer size for reads and writes */
+#define	SERV_PORT		 9988			/* TCP and UDP */
+#define	SERV_PORT_STR	"9988"			/* TCP and UDP */
 
 /* Following shortens all the typecasts of pointer arguments: */
 #define	SA	struct sockaddr
@@ -111,6 +113,10 @@ void Unlink(const char *pathname);
 pid_t Wait(int *iptr);
 pid_t Waitpid(pid_t pid, int *iptr, int options);
 void Write(int fd, void *ptr, size_t nbytes);
+const char *
+Inet_ntop(int family, const void *addrptr, char *strptr, size_t len);
+void
+Inet_pton(int family, const char *strptr, void *addrptr);
 
 /*
  * merge some row funciton for protocal independent
@@ -119,4 +125,12 @@ char *Sock_ntop(const struct sockaddr *sa, socklen_t salen);
 void Writen(int fd, void *ptr, size_t nbytes);
 ssize_t Readn(int fd, void *ptr, size_t nbytes);
 ssize_t Readline(int fd, void *ptr, size_t maxlen);
+
+/* 
+ * prototypes for our own library functions 
+ */
+void str_echo(int sockfd);
+void str_cli(FILE *, int);
+
+
 #endif /*_LIB_H_*/

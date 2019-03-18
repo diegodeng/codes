@@ -2,31 +2,32 @@
 
 int main(int argc, char *argv[])
 {
-	int listenfd, connfd;
-	struct sockaddr_in servaddr;
-	char buff[MAXLINE];
-	time_t ticks;
-	
+	int 				listenfd, connfd;
+	pid_t				childpid;
+	socklen_t			clilen;
+	struct sockaddr_in 	cliaddr,servaddr;
+
 	listenfd = Socket(AF_INET,SOCK_STREAM,0);
 	
 	memset(&servaddr,0,sizeof(servaddr));
 	servaddr.sin_family = AF_INET;
 	servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-	servaddr.sin_port = htons(6666);
+	servaddr.sin_port = htons(SERV_PORT);
 	
 	Bind(listenfd,(SA *)&servaddr,sizeof(servaddr));
 	
 	Listen(listenfd,LISTENQ);  
-	logd("listen began ......\r\n");
-	for( ; ; ){
-		connfd = Accept(listenfd,(SA *)NULL, NULL);
-		ticks = time(NULL);
-		snprintf(buff,sizeof(buff),"%.24s\r\n",ctime(&ticks));
-		Write(connfd,buff,strlen(buff));
 
-		Close(connfd);
+	clilen = sizeof(cliaddr);
+	logd("wating client connecting ......\r\n");
+	for( ; ; ){
+		connfd = Accept(listenfd,(SA *) &cliaddr, &clilen);
+		if ( (childpid = Fork()) == 0) {	/* child process */
+			Close(listenfd);	/* close listening socket */
+			str_echo(connfd);	/* process the request */
+			exit(0);
+		}
+		Close(connfd);			/* parent closes connected socket */
 	}
-	
-	Close(listenfd);
     return 0;
 }

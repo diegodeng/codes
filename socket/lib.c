@@ -393,3 +393,28 @@ void Write(int fd, void *ptr, size_t nbytes)
 	if (write(fd, ptr, nbytes) != nbytes)
 		logd("write error\r\n");
 }
+
+const char *
+Inet_ntop(int family, const void *addrptr, char *strptr, size_t len)
+{
+	const char	*ptr;
+
+	if (strptr == NULL)		/* check for old code */
+		logd("NULL 3rd argument to inet_ntop\r\n");
+	if ( (ptr = inet_ntop(family, addrptr, strptr, len)) == NULL)
+		logd("inet_ntop error\r\n");		/* sets errno */
+	return(ptr);
+}
+
+void
+Inet_pton(int family, const char *strptr, void *addrptr)
+{
+	int		n;
+
+	if ( (n = inet_pton(family, strptr, addrptr)) < 0)
+		logd("inet_pton error for %s\r\n", strptr);	/* errno set */
+	else if (n == 0)
+		logd("inet_pton error for %s\r\n", strptr);	/* errno not set */
+
+	/* nothing to return */
+}

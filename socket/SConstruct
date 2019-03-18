@@ -10,7 +10,8 @@ env = Environment(CC = 'gcc',
                    CCFLAGS = '-O2')
 
 
-env.SharedLibrary('socket', ['lib.c','sock_ntop.c','writen.c','readn.c','readline.c'])
+env.SharedLibrary('socket', ['lib.c','sock_ntop.c','writen.c','readn.c','readline.c',
+							 'str_echo.c','str_cli.c'])
 
-env.Program('server.c', LIBS=['socket'], LIBPATH=['/home/dengzq/Documents/codes/socket'])
+env.Program('server.c', LIBS=['socket'], LIBPATH=['.'])
 env.Program('client.c', LIBS=['socket'], LIBPATH=['.'])
