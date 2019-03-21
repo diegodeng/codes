@@ -1,0 +1,10 @@
+#https://www.scons.org/doc/production/HTML/scons-user/index.html
+#StaticLibrary('foo', ['f1.c', 'f2.c', 'f3.c'])
+#SharedLibrary('foo', ['f1.c', 'f2.c', 'f3.c'])
+#compile scons -Q   clean scons -c
+
+
+SharedLibrary('algorithm', ['list.c'])
+
+Program('test.c',LIBS=['algorithm'], LIBPATH=['.'])
+
