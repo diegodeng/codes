@@ -36,6 +36,7 @@ int	 LocateElem(List list,ElemType e);
 int  ListInsert(List *list,int pos,ElemType e);
 int  ListDelete(List *list,int pos,ElemType *e);
 int  ListLength(List list);
+void showList(List list);
 
 /*
  *  LinkList 链表相关
